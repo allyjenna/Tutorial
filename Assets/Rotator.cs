@@ -6,6 +6,7 @@ public class Rotator : MonoBehaviour
 {
 
     public float rotationSpeed = 0.3f;
+    public PickerUpper player;
     private bool rotate;
 
     // Start is called before the first frame update
@@ -27,14 +28,18 @@ public class Rotator : MonoBehaviour
         }
     }
 
-    //rFixedUpdate is used to run at a fixed interval - not related to input
+    //FixedUpdate is used to run at a fixed interval - not related to input
     void FixedUpdate()
     {
-        if (rotate)
-         {
-        this.GetComponent<Transform>().Rotate(0, rotationSpeed ,0); //floating point ends in f 
-        }
+        if(player != null)
+        {
+        if (rotate && player.count >= 3)
+            {  
+            this.GetComponent<Transform>().Rotate(0, rotationSpeed ,0); //floating point ends in f 
+            }
+        }   
     }
 }
+
 
  
